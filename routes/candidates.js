@@ -64,7 +64,9 @@ router.patch('/:candidateId', async (req,res)=>{
         const updatedElection = await Election.updateOne(
             {_id: req.params.candidateId},
             {$set:{
-                name:req.body.name
+                name: req.body.name ? req.body.name : updatedElection.name,
+                name: req.body.name ? req.body.name : updatedElection.name,
+                name: req.body.name ? req.body.name : updatedElection.name,
             }}
         );
         res.json(updatedElection)
