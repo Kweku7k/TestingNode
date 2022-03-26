@@ -29,4 +29,4 @@ mongoose.connect('mongodb+srv://nanakweku:Evrt5HN5uk9dSsbU@cluster0.ajdd4.mongod
 })
 
 //How do we boot up the server
-app.listen(3000) 
+app.listen(process.env.PORT || 3000) 
