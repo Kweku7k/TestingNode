@@ -29,4 +29,6 @@ mongoose.connect('mongodb+srv://nanakweku:Evrt5HN5uk9dSsbU@cluster0.ajdd4.mongod
 })
 
 //How do we boot up the server
-app.listen(process.env.PORT || 3000) 
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode");
+  }); 
