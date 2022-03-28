@@ -5,6 +5,10 @@ const ElectionSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    slugName:{
+        type:String,
+        required:true
+    },
     emoji:{
         type:String,
         required:true

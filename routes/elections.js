@@ -14,10 +14,10 @@ router.get('/', async(req,res) => {
     }
 })
 //GET SPECIFIC POST
-router.get('/:postId', async(req,res) => {
+router.get('/:slugName', async(req,res) => {
     console.log(req.body.url)
     try{
-        const election = await Election.findById(req.params.postId);
+        const election = await Election.find({slugName:req.params.slugName});
         res.json(election);
     }
     catch(err){
@@ -29,6 +29,7 @@ router.get('/:postId', async(req,res) => {
 router.post('/', (req,res) => {
     const election = new Election({
         name: req.body.name,
+        slugName: req.body.slugName,
         emoji: req.body.emoji,
         candidates: req.body.candidates,
         categories: req.body.categories
