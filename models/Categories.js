@@ -5,6 +5,14 @@ const CategoriesSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    emoji:{
+        type:String,
+        required:true
+    },
+    totalSubCategories:{
+        type:Number,
+        required:true
+    },
     subCategories:{
         type: Array,
         required:false
