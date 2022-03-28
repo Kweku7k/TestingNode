@@ -33,7 +33,9 @@ router.post('/', (req,res) => {
     const category = new Categories({
         name: req.body.name,
         subCategories: req.body.subCategories,
-        startDate: req.body.startDate
+        startDate: req.body.startDate,
+        emoji: req.body.emoji,
+        totalSubCategories: req.body.totalSubCategories
     });
     category.save()
             .then(data=>{

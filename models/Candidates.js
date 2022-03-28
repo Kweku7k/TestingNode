@@ -21,6 +21,14 @@ const Candidates = mongoose.Schema({
         type:Array,
         required:true
     },
+    emoji:{
+        type:String,
+        required:true
+    },
+    totalSubCategories:{
+        type:Number,
+        required:true
+    },
     
 })
 
