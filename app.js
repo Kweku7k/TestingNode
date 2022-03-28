@@ -2,9 +2,12 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 require('dotenv/config')
 const bodyParser = require('body-parser')
+var cors = require('cors')
 const app = express();
 
+
 app.use(bodyParser.json())
+app.use(cors())
 
 // Middleware - function that executes when routes are hit.
 // app.use('/posts', ()=>{
@@ -15,9 +18,11 @@ app.use(bodyParser.json())
 const postsRoute = require('./routes/posts');
 const electionsRoute = require('./routes/elections')
 const candidatesRoute = require('./routes/candidates')
+const categoriesRoute = require('./routes/categories')
 app.use('/posts', postsRoute)
 app.use('/elections', electionsRoute)
 app.use('/candidates', candidatesRoute)
+app.use('/categories', categoriesRoute)
 
 //Connect To Db
 mongoose.connect('mongodb+srv://nanakweku:Evrt5HN5uk9dSsbU@cluster0.ajdd4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')

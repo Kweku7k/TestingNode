@@ -65,8 +65,10 @@ router.patch('/:candidateId', async (req,res)=>{
             {_id: req.params.candidateId},
             {$set:{
                 name: req.body.name ? req.body.name : updatedElection.name,
-                name: req.body.name ? req.body.name : updatedElection.name,
-                name: req.body.name ? req.body.name : updatedElection.name,
+                number: req.body.number ? req.body.number : updatedElection.number,
+                image: req.body.image ? req.body.image : updatedElection.image,
+                totalVotes: req.body.totalVotes ? req.body.totalVotes : updatedElection.totalVotes,
+                categories: req.body.categories ? req.body.categories : updatedElection.categories,
             }}
         );
         res.json(updatedElection)
