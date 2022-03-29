@@ -14,6 +14,22 @@ router.get('/', async(req,res) => {
         res.json({message:err})
     }
 })
+
+// SPECIFIC CANDIDATE
+router.get('/:election/:category', async(req,res) => {
+    console.log(req.body.url)
+    console.log(req.params)
+    try{
+        const category = await Candidates.find({election:req.params.election, category:req.params.category});
+        console.log(category)
+        res.json(category);
+    }
+    catch(err){
+        // res.json({message:"err"})
+        console.log("There was an error")
+    }
+})
+
 //GET SPECIFIC POST
 router.get('/:candidateId', async(req,res) => {
     console.log(req.body.url)

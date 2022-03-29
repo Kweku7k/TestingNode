@@ -18,11 +18,13 @@ app.use(cors())
 const postsRoute = require('./routes/posts');
 const electionsRoute = require('./routes/elections')
 const candidatesRoute = require('./routes/candidates')
-const categoriesRoute = require('./routes/categories')
+const categoriesRoute = require('./routes/categories');
+const SubCategoriesRoute = require('./routes/SubCategories');
 app.use('/posts', postsRoute)
 app.use('/elections', electionsRoute)
 app.use('/candidates', candidatesRoute)
 app.use('/categories', categoriesRoute)
+app.use('/subcategories', SubCategoriesRoute)
 
 //Connect To Db
 mongoose.connect('mongodb+srv://nanakweku:Evrt5HN5uk9dSsbU@cluster0.ajdd4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')

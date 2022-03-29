@@ -1,6 +1,5 @@
 const express = require ('express')
 const router = express.Router()
-const Categories = require('../models/Categories')
 const SubCategories = require('../models/SubCategories')
 
 //ROUTES
@@ -8,8 +7,8 @@ router.get('/', async(req,res) => {
     console.log(req.params)
     try{
         console.log(req.url)
-        const categories = await Categories.find();
-        res.json(categories);
+        const subCategories = await SubCategories.find();
+        res.json(subCategories);
     }
     catch(err){
         res.json({message:err})
@@ -34,7 +33,20 @@ router.get('/:election/:category', async(req,res) => {
     console.log(req.body.url)
     console.log(req.params)
     try{
-        const category = await SubCategories.find({election:req.params.election, category:req.params.category});
+        const category = await SubCategories.find({election:req.params.election, name:req.params.category});
+        console.log(category)
+        res.json(category);
+    }
+    catch(err){
+        console.log("There was an error")
+    }
+})
+//GET SPECIFIC SUN CATEGORY
+router.get('/:election/:category/:subcategory', async(req,res) => {
+    console.log(req.body.url)
+    console.log(req.params)
+    try{
+        const category = await SubCategories.find({election:req.params.election, category:req.params.category, name:req.params.subcategory});
         console.log(category)
         res.json(category);
     }
@@ -44,21 +56,22 @@ router.get('/:election/:category', async(req,res) => {
 })
 //CREATE A NEW POST
 router.post('/', (req,res) => {
-    const category = new Categories({
+    const subCategory = new SubCategories({
         name: req.body.name,
         election: req.body.election,
-        subCategories: req.body.subCategories,
+        category: req.body.category,
         startDate: req.body.startDate,
         emoji: req.body.emoji,
         totalSubCategories: req.body.totalSubCategories
     });
-    category.save()
+    subCategory.save()
             .then(data=>{
                 res.json(data)
             })
             .catch(err=>{
                 res.json({message:'There was an error' + err})
             })
+    // console.log("Hit Success")
 })
 //DELETE A SPECIFIC ELECTION
 router.delete('/:categoryId', async(req,res) => {
