@@ -1,6 +1,8 @@
 const express = require ('express')
 const router = express.Router()
 const Election = require('../models/Elections')
+const Candidates = require('../models/Candidates')
+const Categories = require('../models/Categories')
 
 //ROUTES
 router.get('/', async(req,res) => {
@@ -19,6 +21,22 @@ router.get('/:slugName', async(req,res) => {
     try{
         const election = await Election.find({slugName:req.params.slugName});
         res.json(election);
+    }
+    catch(err){
+        // res.json({message:"err"})
+        console.log("There was an error")
+    }
+})
+// Get Soecific Category for Election
+router.get('/:slugName/:category', async(req,res) => {
+    console.log(req.body.url)
+    try{
+        const election = await Election.find({slugName:req.params.slugName});
+        console.log(election)
+        const category = await Categories.find({name:req.params.category, election:req.params.slugName})
+        console.log(category)
+        
+        res.json(category);
     }
     catch(err){
         // res.json({message:"err"})

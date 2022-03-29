@@ -15,11 +15,11 @@ router.get('/', async(req,res) => {
     }
 })
 //GET SPECIFIC POST
-router.get('/:categoryId', async(req,res) => {
+router.get('/:election/:category', async(req,res) => {
     console.log(req.body.url)
     console.log(req.params)
     try{
-        const category = await Categories.findById(req.params.categoryId);
+        const category = await Categories.find({election:req.params.election, name:req.params.category});
         console.log(category)
         res.json(category);
     }
@@ -32,6 +32,7 @@ router.get('/:categoryId', async(req,res) => {
 router.post('/', (req,res) => {
     const category = new Categories({
         name: req.body.name,
+        election: req.body.election,
         subCategories: req.body.subCategories,
         startDate: req.body.startDate,
         emoji: req.body.emoji,

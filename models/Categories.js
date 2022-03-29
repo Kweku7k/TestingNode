@@ -9,6 +9,10 @@ const CategoriesSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    election:{
+        type:String,
+        require:true
+    },
     totalSubCategories:{
         type:Number,
         required:true
