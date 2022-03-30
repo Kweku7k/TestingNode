@@ -19,7 +19,7 @@ const postsRoute = require('./routes/posts');
 const electionsRoute = require('./routes/elections')
 const candidatesRoute = require('./routes/candidates')
 const categoriesRoute = require('./routes/categories');
-const SubCategoriesRoute = require('./routes/SubCategories');
+const SubCategoriesRoute = require('./routes/subCategories');
 app.use('/posts', postsRoute)
 app.use('/elections', electionsRoute)
 app.use('/candidates', candidatesRoute)
