@@ -33,7 +33,7 @@ router.get('/:election/:category', async(req,res) => {
     console.log(req.body.url)
     console.log(req.params)
     try{
-        const category = await SubCategories.find({election:req.params.election, name:req.params.category});
+        const category = await SubCategories.find({election:req.params.election, category:req.params.category});
         console.log(category)
         res.json(category);
     }
