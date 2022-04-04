@@ -5,7 +5,7 @@ const Candidates = mongoose.Schema({
         type:String,
         required:true
     },
-    number:{
+    election:{
         type:String,
         required:true
     },
@@ -19,7 +19,7 @@ const Candidates = mongoose.Schema({
     },
     categories:{
         type:Array,
-        required:true
+        required:false
     },
     emoji:{
         type:String,
@@ -27,7 +27,7 @@ const Candidates = mongoose.Schema({
     },
     totalSubCategories:{
         type:Number,
-        required:true
+        required:false
     },
     
 })
